@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package publishen.product.service;
+
+
+service productService{
+    rpc CreateProduct(Product) returns (Response){}
+}
+
+
+message Product{
+    string title=1;
+    string description=2;
+    string banner=3;
+    repeated string images=5;
+    Location location=6;
+    repeated Attribute attributes=7;
+    string shareGroupID=9;
+    string userID=10;
+    repeated string tags=11;
+    enum share_state {
+        PUBLIC=0;
+        PRIVATE=1;
+    };
+    enum class {
+        I_WANT=0;
+        I_HAVE=1;
+    };
+    enum group {
+        ARTICLE=0;
+        PRODUCT=1;
+        GALLERY=2;
+        VIDEO=3;
+    };
+}
+
+message Location {
+    float latitude=1;
+    float longitude=2;
+}
+
+message Attribute{
+  string key=1;
+  string value=2;
+}
+
+
+message Response{
+    string errorMessage=1;
+    bool success=2;
+    string documentID=3;
+    Product product=4;
+    repeated Product products=5;
+}

@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+
+      publishen-product:
+        build: ./product
+        ports:
+          - 8383:50050
+        environment:
+          MICRO_REGISTRY: "mdns"
+          MICRO_ADDRESS:  ":50050"
+          DB_HOST:  "arangoDB:8529"
+
+
+
+      arangoDB:
+        image: arangodb/enterprise:3.4.0
+        ports:
+          - 8529:8529
+        env_file:
+          - docker.env
+

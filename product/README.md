@@ -1,0 +1,1 @@
+protoc -I . product.proto --go_out=. --micro_out=. product.proto
