@@ -1,8 +1,8 @@
 package repository
 
 import (
-	config "github.com/amirallio/publishen/product/config"
-	pb "github.com/amirallio/publishen/product/model/product"
+	"github.com/amiraliio/publishen/product/config"
+	pb "github.com/amiraliio/publishen/product/model/product"
 )
 
 //Adapter is product repository interface

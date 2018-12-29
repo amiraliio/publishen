@@ -1,4 +1,4 @@
-module github.com/amirallio/publishen/product
+module github.com/amiraliio/publishen/product
 
 require (
 	contrib.go.opencensus.io/exporter/stackdriver v0.8.0 // indirect
@@ -11,7 +11,7 @@ require (
 	github.com/SAP/go-hdb v0.13.1 // indirect
 	github.com/SermoDigital/jose v0.9.1 // indirect
 	github.com/StackExchange/wmi v0.0.0-20181212234831-e0a55b97c705 // indirect
-	github.com/aliyun/alibaba-cloud-sdk-go v0.0.0-20181221071246-2ce95bbb8f64 // indirect
+	github.com/aliyun/alibaba-cloud-sdk-go v0.0.0-20181229105307-41fddfaf3772 // indirect
 	github.com/araddon/gou v0.0.0-20180803232539-d7d8174cb8b3 // indirect
 	github.com/arangodb/go-driver v0.0.0-20181206080103-b1a864427d13
 	github.com/armon/circbuf v0.0.0-20150827004946-bbbad097214e // indirect
@@ -43,7 +43,7 @@ require (
 	github.com/docker/go-units v0.3.3 // indirect
 	github.com/duosecurity/duo_api_golang v0.0.0-20181210160733-61e0defebf22 // indirect
 	github.com/elazarl/go-bindata-assetfs v1.0.0 // indirect
-	github.com/envoyproxy/go-control-plane v0.6.3 // indirect
+	github.com/envoyproxy/go-control-plane v0.6.5 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/fullsailor/pkcs7 v0.0.0-20180613152042-8306686428a5 // indirect
 	github.com/gammazero/deque v0.0.0-20180920172122-f6adf94963e4 // indirect
@@ -114,7 +114,7 @@ require (
 	github.com/lyft/protoc-gen-validate v0.0.12 // indirect
 	github.com/mattbaird/elastigo v0.0.0-20170123220020-2fe47fd29e4b // indirect
 	github.com/michaelklishin/rabbit-hole v1.4.0 // indirect
-	github.com/micro/cli v0.0.0-20180830071301-8b9d33ec2f19 // indirect
+	github.com/micro/cli v0.0.0-20181223203424-1b0c9793c300 // indirect
 	github.com/micro/go-log v0.0.0-20170512141327-cbfa9447f9b6
 	github.com/micro/go-micro v0.15.1
 	github.com/micro/go-rcache v0.0.0-20180418165751-a581a57b5133 // indirect
@@ -137,7 +137,7 @@ require (
 	github.com/pborman/uuid v1.2.0 // indirect
 	github.com/pierrec/lz4 v2.0.5+incompatible // indirect
 	github.com/pquerna/cachecontrol v0.0.0-20180517163645-1555304b9b35 // indirect
-	github.com/pquerna/otp v1.0.0 // indirect
+	github.com/pquerna/otp v1.1.0 // indirect
 	github.com/prometheus/client_golang v0.9.2 // indirect
 	github.com/ryanuber/go-glob v0.0.0-20170128012129-256dc444b735 // indirect
 	github.com/samuel/go-zookeeper v0.0.0-20180130194729-c4fab1ac1bec // indirect
@@ -167,5 +167,5 @@ require (
 	gopkg.in/square/go-jose.v2 v2.2.1 // indirect
 	gopkg.in/vmihailenco/msgpack.v2 v2.9.1 // indirect
 	gotest.tools v2.2.0+incompatible // indirect
-	layeh.com/radius v0.0.0-20181129000116-83b1b1c7637c // indirect
+	layeh.com/radius v0.0.0-20181224030715-9a016ab9b9ec // indirect
 )

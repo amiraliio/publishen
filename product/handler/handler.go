@@ -1,9 +1,9 @@
 package handler
 
 import (
-	context "context"
-	pb "github.com/amirallio/publishen/product/model/product"
-	repository "github.com/amirallio/publishen/product/repository"
+	"context"
+	pb "github.com/amiraliio/publishen/product/model/product"
+	"github.com/amiraliio/publishen/product/repository"
 )
 
 //Services client for product handler
