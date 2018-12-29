@@ -1,5 +1,2 @@
-docker.env
 .env
-.vscode
-.idea
 go.sum
