@@ -16,7 +16,7 @@ func main() {
 
 	srv.Init()
 
-	if err := pb.RegisterProductServiceHandler(srv.Server(), &handler.Service{}); err != nil {
+	if err := pb.RegisterProductServiceHandler(srv.Server(), new(handler.Service)); err != nil {
 		log.Fatal(err)
 	}
 
