@@ -6,9 +6,6 @@ COPY . .
 
 ENV GO111MODULE=on
 
-COPY go.mod .
-COPY go.sum .
-
 RUN go mod download
 
 RUN CGO=0 GOOS=linux go build -a -installsuffix cgo .
