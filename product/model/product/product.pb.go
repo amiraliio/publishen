@@ -3,11 +3,9 @@
 
 package publishen_product_service
 
-import (
-	fmt "fmt"
-	proto "github.com/golang/protobuf/proto"
-	math "math"
-)
+import proto "github.com/golang/protobuf/proto"
+import fmt "fmt"
+import math "math"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -18,7 +16,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type ProductShareState int32
 
@@ -31,7 +29,6 @@ var ProductShareState_name = map[int32]string{
 	0: "PUBLIC",
 	1: "PRIVATE",
 }
-
 var ProductShareState_value = map[string]int32{
 	"PUBLIC":  0,
 	"PRIVATE": 1,
@@ -40,9 +37,8 @@ var ProductShareState_value = map[string]int32{
 func (x ProductShareState) String() string {
 	return proto.EnumName(ProductShareState_name, int32(x))
 }
-
 func (ProductShareState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_f0fd8b59378f44a5, []int{0, 0}
+	return fileDescriptor_product_e19183da4dd63440, []int{0, 0}
 }
 
 type ProductClass int32
@@ -56,7 +52,6 @@ var ProductClass_name = map[int32]string{
 	0: "I_WANT",
 	1: "I_HAVE",
 }
-
 var ProductClass_value = map[string]int32{
 	"I_WANT": 0,
 	"I_HAVE": 1,
@@ -65,9 +60,8 @@ var ProductClass_value = map[string]int32{
 func (x ProductClass) String() string {
 	return proto.EnumName(ProductClass_name, int32(x))
 }
-
 func (ProductClass) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_f0fd8b59378f44a5, []int{0, 1}
+	return fileDescriptor_product_e19183da4dd63440, []int{0, 1}
 }
 
 type ProductGroup int32
@@ -85,7 +79,6 @@ var ProductGroup_name = map[int32]string{
 	2: "GALLERY",
 	3: "VIDEO",
 }
-
 var ProductGroup_value = map[string]int32{
 	"ARTICLE": 0,
 	"PRODUCT": 1,
@@ -96,9 +89,8 @@ var ProductGroup_value = map[string]int32{
 func (x ProductGroup) String() string {
 	return proto.EnumName(ProductGroup_name, int32(x))
 }
-
 func (ProductGroup) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_f0fd8b59378f44a5, []int{0, 2}
+	return fileDescriptor_product_e19183da4dd63440, []int{0, 2}
 }
 
 type Product struct {
@@ -120,17 +112,16 @@ func (m *Product) Reset()         { *m = Product{} }
 func (m *Product) String() string { return proto.CompactTextString(m) }
 func (*Product) ProtoMessage()    {}
 func (*Product) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f0fd8b59378f44a5, []int{0}
+	return fileDescriptor_product_e19183da4dd63440, []int{0}
 }
-
 func (m *Product) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Product.Unmarshal(m, b)
 }
 func (m *Product) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Product.Marshal(b, m, deterministic)
 }
-func (m *Product) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Product.Merge(m, src)
+func (dst *Product) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Product.Merge(dst, src)
 }
 func (m *Product) XXX_Size() int {
 	return xxx_messageInfo_Product.Size(m)
@@ -216,17 +207,16 @@ func (m *Location) Reset()         { *m = Location{} }
 func (m *Location) String() string { return proto.CompactTextString(m) }
 func (*Location) ProtoMessage()    {}
 func (*Location) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f0fd8b59378f44a5, []int{1}
+	return fileDescriptor_product_e19183da4dd63440, []int{1}
 }
-
 func (m *Location) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Location.Unmarshal(m, b)
 }
 func (m *Location) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Location.Marshal(b, m, deterministic)
 }
-func (m *Location) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Location.Merge(m, src)
+func (dst *Location) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Location.Merge(dst, src)
 }
 func (m *Location) XXX_Size() int {
 	return xxx_messageInfo_Location.Size(m)
@@ -263,17 +253,16 @@ func (m *Attribute) Reset()         { *m = Attribute{} }
 func (m *Attribute) String() string { return proto.CompactTextString(m) }
 func (*Attribute) ProtoMessage()    {}
 func (*Attribute) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f0fd8b59378f44a5, []int{2}
+	return fileDescriptor_product_e19183da4dd63440, []int{2}
 }
-
 func (m *Attribute) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Attribute.Unmarshal(m, b)
 }
 func (m *Attribute) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Attribute.Marshal(b, m, deterministic)
 }
-func (m *Attribute) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Attribute.Merge(m, src)
+func (dst *Attribute) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Attribute.Merge(dst, src)
 }
 func (m *Attribute) XXX_Size() int {
 	return xxx_messageInfo_Attribute.Size(m)
@@ -313,17 +302,16 @@ func (m *Response) Reset()         { *m = Response{} }
 func (m *Response) String() string { return proto.CompactTextString(m) }
 func (*Response) ProtoMessage()    {}
 func (*Response) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f0fd8b59378f44a5, []int{3}
+	return fileDescriptor_product_e19183da4dd63440, []int{3}
 }
-
 func (m *Response) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Response.Unmarshal(m, b)
 }
 func (m *Response) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Response.Marshal(b, m, deterministic)
 }
-func (m *Response) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Response.Merge(m, src)
+func (dst *Response) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Response.Merge(dst, src)
 }
 func (m *Response) XXX_Size() int {
 	return xxx_messageInfo_Response.Size(m)
@@ -370,18 +358,18 @@ func (m *Response) GetProducts() []*Product {
 }
 
 func init() {
-	proto.RegisterEnum("publishen.product.service.ProductShareState", ProductShareState_name, ProductShareState_value)
-	proto.RegisterEnum("publishen.product.service.ProductClass", ProductClass_name, ProductClass_value)
-	proto.RegisterEnum("publishen.product.service.ProductGroup", ProductGroup_name, ProductGroup_value)
 	proto.RegisterType((*Product)(nil), "publishen.product.service.Product")
 	proto.RegisterType((*Location)(nil), "publishen.product.service.Location")
 	proto.RegisterType((*Attribute)(nil), "publishen.product.service.Attribute")
 	proto.RegisterType((*Response)(nil), "publishen.product.service.Response")
+	proto.RegisterEnum("publishen.product.service.ProductShareState", ProductShareState_name, ProductShareState_value)
+	proto.RegisterEnum("publishen.product.service.ProductClass", ProductClass_name, ProductClass_value)
+	proto.RegisterEnum("publishen.product.service.ProductGroup", ProductGroup_name, ProductGroup_value)
 }
 
-func init() { proto.RegisterFile("product.proto", fileDescriptor_f0fd8b59378f44a5) }
+func init() { proto.RegisterFile("product.proto", fileDescriptor_product_e19183da4dd63440) }
 
-var fileDescriptor_f0fd8b59378f44a5 = []byte{
+var fileDescriptor_product_e19183da4dd63440 = []byte{
 	// 507 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x53, 0x51, 0x8b, 0xd3, 0x40,
 	0x10, 0x6e, 0x9a, 0x6b, 0x9b, 0x4e, 0x3c, 0x09, 0x83, 0x48, 0x3c, 0x44, 0x4b, 0x14, 0xe9, 0x53,
