@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/amirallio/publishen/product/config"
+	config "github.com/amirallio/publishen/product/config"
 	pb "github.com/amirallio/publishen/product/model/product"
 )
 

@@ -1,9 +1,9 @@
 package config
 
 import (
-	"github.com/arangodb/go-driver"
-	"github.com/arangodb/go-driver/http"
-	"os"
+	driver "github.com/arangodb/go-driver"
+	http "github.com/arangodb/go-driver/http"
+	os "os"
 )
 
 var DBHost = os.Getenv("ARANGODB_HOST")

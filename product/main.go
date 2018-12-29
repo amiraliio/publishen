@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/amirallio/publishen/product/handler"
+	handler "github.com/amirallio/publishen/product/handler"
 	pb "github.com/amirallio/publishen/product/model/product"
-	"github.com/micro/go-log"
-	"github.com/micro/go-micro"
+	log "github.com/micro/go-log"
+	micro "github.com/micro/go-micro"
 )
 
 func main() {
