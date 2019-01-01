@@ -1,8 +1,8 @@
 FROM golang:latest as builder
 
-ENV GO111MODULE=on
-
 WORKDIR /var/www/publishen/product
+
+ENV GO111MODULE=on
 
 COPY . .
 

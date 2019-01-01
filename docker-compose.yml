@@ -6,7 +6,11 @@ services:
         build: ./product
         ports:
           - 8383:50050
+        volumes:
+          - .:/publishen
+          - $GOPATH/pkg/mod:/go/pkg/mod
         environment:
+          GOPATH: /go
           MICRO_REGISTRY: "mdns"
           MICRO_ADDRESS:  ":50050"
           DB_HOST:  "arangoDB:8529"
