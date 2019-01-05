@@ -6,9 +6,6 @@ services:
         build: ./product
         ports:
           - 8383:50050
-        volumes:
-          - .:/publishen
-          - $GOPATH/pkg/mod:/go/pkg/mod
         environment:
           GOPATH: /go
           MICRO_REGISTRY: "mdns"

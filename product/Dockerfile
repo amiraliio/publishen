@@ -1,14 +1,12 @@
 FROM golang:latest as builder
 
-WORKDIR /var/www/publishen/product
-
 ENV GO111MODULE=on
+
+WORKDIR /var/www/publishen/product
 
 COPY . .
 
-RUN go mod download
-
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo .
+RUN CGO_ENABLED=0 GOOS=linux go build -o product -mod=vendor -a -installsuffix cgo .
 
 FROM alpine:latest
 
@@ -20,7 +18,6 @@ WORKDIR /publishen
 
 COPY --from=builder  /var/www/publishen/product .
 
+ENTRYPOINT ["/publishen/product"]
+
 CMD ["./product"]
-
-
-
