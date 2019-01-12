@@ -6,7 +6,9 @@ WORKDIR /var/www/publishen/product
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o product -mod=vendor -a -installsuffix cgo .
+RUN go mod download
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o product -a -installsuffix cgo .
 
 FROM alpine:latest
 
