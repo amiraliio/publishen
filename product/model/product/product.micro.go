@@ -8,6 +8,7 @@ It is generated from these files:
 	product.proto
 
 It has these top-level messages:
+	Request
 	Product
 	Location
 	Attribute
@@ -45,6 +46,10 @@ var _ server.Option
 
 type ProductService interface {
 	CreateProduct(ctx context.Context, in *Product, opts ...client.CallOption) (*Response, error)
+	ListOfProducts(ctx context.Context, in *Request, opts ...client.CallOption) (*Response, error)
+	GetProduct(ctx context.Context, in *Request, opts ...client.CallOption) (*Response, error)
+	UpdateProduct(ctx context.Context, in *Product, opts ...client.CallOption) (*Response, error)
+	DeleteProduct(ctx context.Context, in *Request, opts ...client.CallOption) (*Response, error)
 }
 
 type productService struct {
@@ -75,15 +80,63 @@ func (c *productService) CreateProduct(ctx context.Context, in *Product, opts ..
 	return out, nil
 }
 
+func (c *productService) ListOfProducts(ctx context.Context, in *Request, opts ...client.CallOption) (*Response, error) {
+	req := c.c.NewRequest(c.name, "ProductService.ListOfProducts", in)
+	out := new(Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productService) GetProduct(ctx context.Context, in *Request, opts ...client.CallOption) (*Response, error) {
+	req := c.c.NewRequest(c.name, "ProductService.GetProduct", in)
+	out := new(Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productService) UpdateProduct(ctx context.Context, in *Product, opts ...client.CallOption) (*Response, error) {
+	req := c.c.NewRequest(c.name, "ProductService.UpdateProduct", in)
+	out := new(Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productService) DeleteProduct(ctx context.Context, in *Request, opts ...client.CallOption) (*Response, error) {
+	req := c.c.NewRequest(c.name, "ProductService.DeleteProduct", in)
+	out := new(Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for ProductService service
 
 type ProductServiceHandler interface {
 	CreateProduct(context.Context, *Product, *Response) error
+	ListOfProducts(context.Context, *Request, *Response) error
+	GetProduct(context.Context, *Request, *Response) error
+	UpdateProduct(context.Context, *Product, *Response) error
+	DeleteProduct(context.Context, *Request, *Response) error
 }
 
 func RegisterProductServiceHandler(s server.Server, hdlr ProductServiceHandler, opts ...server.HandlerOption) error {
 	type productService interface {
 		CreateProduct(ctx context.Context, in *Product, out *Response) error
+		ListOfProducts(ctx context.Context, in *Request, out *Response) error
+		GetProduct(ctx context.Context, in *Request, out *Response) error
+		UpdateProduct(ctx context.Context, in *Product, out *Response) error
+		DeleteProduct(ctx context.Context, in *Request, out *Response) error
 	}
 	type ProductService struct {
 		productService
@@ -98,4 +151,20 @@ type productServiceHandler struct {
 
 func (h *productServiceHandler) CreateProduct(ctx context.Context, in *Product, out *Response) error {
 	return h.ProductServiceHandler.CreateProduct(ctx, in, out)
+}
+
+func (h *productServiceHandler) ListOfProducts(ctx context.Context, in *Request, out *Response) error {
+	return h.ProductServiceHandler.ListOfProducts(ctx, in, out)
+}
+
+func (h *productServiceHandler) GetProduct(ctx context.Context, in *Request, out *Response) error {
+	return h.ProductServiceHandler.GetProduct(ctx, in, out)
+}
+
+func (h *productServiceHandler) UpdateProduct(ctx context.Context, in *Product, out *Response) error {
+	return h.ProductServiceHandler.UpdateProduct(ctx, in, out)
+}
+
+func (h *productServiceHandler) DeleteProduct(ctx context.Context, in *Request, out *Response) error {
+	return h.ProductServiceHandler.DeleteProduct(ctx, in, out)
 }

@@ -5,8 +5,13 @@ package publishen.product.service;
 
 service productService{
     rpc CreateProduct(Product) returns (Response){}
+    rpc ListOfProducts(Request) returns (Response){}
+    rpc GetProduct(Request) returns (Response){}
+    rpc UpdateProduct(Product) returns (Response){}
+    rpc DeleteProduct(Request) returns (Response){}
 }
 
+message Request{}
 
 message Product{
     string title=1;
