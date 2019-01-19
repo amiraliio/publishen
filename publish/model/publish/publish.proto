@@ -1,29 +1,31 @@
 syntax = "proto3";
 
-package publishen.product.service;
+package publishen.publish.service;
 
 
-service productService{
-    rpc CreateProduct(Product) returns (Response){}
-    rpc ListOfProducts(Request) returns (Response){}
-    rpc GetProduct(Request) returns (Response){}
-    rpc UpdateProduct(Product) returns (Response){}
-    rpc DeleteProduct(Request) returns (Response){}
+service publishService{
+    rpc CreatePublish(Publish) returns (Response){}
+    rpc ListOfPublishes(Request) returns (Response){}
+    rpc GetPublish(Publish) returns (Response){}
+    rpc UpdatePublish(Publish) returns (Response){}
+    rpc DeletePublish(Publish) returns (Response){}
 }
 
 message Request{}
 
-message Product{
-    string title=1;
-    string description=2;
-    string banner=3;
+message Publish{
+    string ID = 1;
+    string title=2;
+    string description=3;
+    string banner=4;
     repeated string images=5;
     Location location=6;
     repeated Attribute attributes=7;
     string shareGroupID=9;
     string userID=10;
     repeated string tags=11;
-    enum share_state {
+    string Key =12;
+    enum shareState {
         PUBLIC=0;
         PRIVATE=1;
     };
@@ -36,6 +38,8 @@ message Product{
         PRODUCT=1;
         GALLERY=2;
         VIDEO=3;
+        JOB=4;
+        PROJECT=5;
     };
 }
 
@@ -54,6 +58,6 @@ message Response{
     string errorMessage=1;
     bool success=2;
     string documentID=3;
-    Product product=4;
-    repeated Product products=5;
+    Publish publish=4;
+    repeated Publish publishes=5;
 }

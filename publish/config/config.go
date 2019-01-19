@@ -6,8 +6,10 @@ import (
 	"os"
 )
 
+//DBHost service
 var DBHost = os.Getenv("ARANGODB_HOST")
 
+//DB service
 func DB() (driver.Database, error) {
 
 	localDBHost := os.Getenv("DB_HOST")
