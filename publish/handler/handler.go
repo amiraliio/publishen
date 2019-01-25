@@ -43,12 +43,11 @@ func (s *Service) GetPublish(ctx context.Context, req *pb.Publish, res *pb.Respo
 	return nil
 }
 
-
 //ListOfPublishes publish service
 func (s *Service) ListOfPublishes(ctx context.Context, req *pb.Request, res *pb.Response) error {
 	repo := s.getRepository()
 	publishes, err := repo.List(req)
-	if err !=nil {
+	if err != nil {
 		res.Success = false
 		res.ErrorMessage = err.Error()
 		return nil
