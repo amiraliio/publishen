@@ -38,7 +38,7 @@ func (x PublishShareState) String() string {
 	return proto.EnumName(PublishShareState_name, int32(x))
 }
 func (PublishShareState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_publish_0d45fcf41e57ab1e, []int{1, 0}
+	return fileDescriptor_publish_781860c19b2f2b5b, []int{1, 0}
 }
 
 type PublishClass int32
@@ -61,7 +61,7 @@ func (x PublishClass) String() string {
 	return proto.EnumName(PublishClass_name, int32(x))
 }
 func (PublishClass) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_publish_0d45fcf41e57ab1e, []int{1, 1}
+	return fileDescriptor_publish_781860c19b2f2b5b, []int{1, 1}
 }
 
 type PublishGroup int32
@@ -96,7 +96,7 @@ func (x PublishGroup) String() string {
 	return proto.EnumName(PublishGroup_name, int32(x))
 }
 func (PublishGroup) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_publish_0d45fcf41e57ab1e, []int{1, 2}
+	return fileDescriptor_publish_781860c19b2f2b5b, []int{1, 2}
 }
 
 type Request struct {
@@ -109,7 +109,7 @@ func (m *Request) Reset()         { *m = Request{} }
 func (m *Request) String() string { return proto.CompactTextString(m) }
 func (*Request) ProtoMessage()    {}
 func (*Request) Descriptor() ([]byte, []int) {
-	return fileDescriptor_publish_0d45fcf41e57ab1e, []int{0}
+	return fileDescriptor_publish_781860c19b2f2b5b, []int{0}
 }
 func (m *Request) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Request.Unmarshal(m, b)
@@ -150,7 +150,7 @@ func (m *Publish) Reset()         { *m = Publish{} }
 func (m *Publish) String() string { return proto.CompactTextString(m) }
 func (*Publish) ProtoMessage()    {}
 func (*Publish) Descriptor() ([]byte, []int) {
-	return fileDescriptor_publish_0d45fcf41e57ab1e, []int{1}
+	return fileDescriptor_publish_781860c19b2f2b5b, []int{1}
 }
 func (m *Publish) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Publish.Unmarshal(m, b)
@@ -259,7 +259,7 @@ func (m *Location) Reset()         { *m = Location{} }
 func (m *Location) String() string { return proto.CompactTextString(m) }
 func (*Location) ProtoMessage()    {}
 func (*Location) Descriptor() ([]byte, []int) {
-	return fileDescriptor_publish_0d45fcf41e57ab1e, []int{2}
+	return fileDescriptor_publish_781860c19b2f2b5b, []int{2}
 }
 func (m *Location) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Location.Unmarshal(m, b)
@@ -305,7 +305,7 @@ func (m *Attribute) Reset()         { *m = Attribute{} }
 func (m *Attribute) String() string { return proto.CompactTextString(m) }
 func (*Attribute) ProtoMessage()    {}
 func (*Attribute) Descriptor() ([]byte, []int) {
-	return fileDescriptor_publish_0d45fcf41e57ab1e, []int{3}
+	return fileDescriptor_publish_781860c19b2f2b5b, []int{3}
 }
 func (m *Attribute) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Attribute.Unmarshal(m, b)
@@ -354,7 +354,7 @@ func (m *Response) Reset()         { *m = Response{} }
 func (m *Response) String() string { return proto.CompactTextString(m) }
 func (*Response) ProtoMessage()    {}
 func (*Response) Descriptor() ([]byte, []int) {
-	return fileDescriptor_publish_0d45fcf41e57ab1e, []int{4}
+	return fileDescriptor_publish_781860c19b2f2b5b, []int{4}
 }
 func (m *Response) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Response.Unmarshal(m, b)
@@ -420,9 +420,9 @@ func init() {
 	proto.RegisterEnum("publishen.publish.service.PublishGroup", PublishGroup_name, PublishGroup_value)
 }
 
-func init() { proto.RegisterFile("publish.proto", fileDescriptor_publish_0d45fcf41e57ab1e) }
+func init() { proto.RegisterFile("publish.proto", fileDescriptor_publish_781860c19b2f2b5b) }
 
-var fileDescriptor_publish_0d45fcf41e57ab1e = []byte{
+var fileDescriptor_publish_781860c19b2f2b5b = []byte{
 	// 590 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x54, 0xc1, 0x6e, 0xd3, 0x40,
 	0x10, 0x6d, 0xe2, 0x38, 0x8e, 0xc7, 0x4d, 0xb1, 0x56, 0x08, 0x99, 0x0a, 0x41, 0x64, 0x40, 0xea,

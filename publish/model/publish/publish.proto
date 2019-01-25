@@ -14,26 +14,26 @@ service publishService{
 message Request{}
 
 message Publish{
-    string ID = 1;
-    string title=2;
-    string description=3;
-    string banner=4;
-    repeated string images=5;
-    Location location=6;
-    repeated Attribute attributes=7;
-    string shareGroupID=9;
-    string userID=10;
-    repeated string tags=11;
-    string Key =12;
-    enum shareState {
+    string ID = 1; //Document ID from database
+    string title=2; //Publish title
+    string description=3; //Publish description
+    string banner=4; //Publish banner picture
+    repeated string images=5; //Publish gallery picture
+    Location location=6; //Publish location
+    repeated Attribute attributes=7; //Publish attribute
+    string shareGroupID=9; //Publish ShareGroupID, this mean user can create multi group of shares like group of users group of category,etc
+    string userID=10;  //userID for publish
+    repeated string tags=11;  //Users can add some tags on their publishing
+    string Key =12;  //Document Key from database
+    enum shareState {   //User must add share state like private or public on their publish
         PUBLIC=0;
         PRIVATE=1;
     };
-    enum class {
+    enum class {    //User must add class of publish kike I_WANT or I_HAVE
         I_WANT=0;
         I_HAVE=1;
     };
-    enum group {
+    enum group {   //The user must specify what is it the publish
         ARTICLE=0;
         PRODUCT=1;
         GALLERY=2;

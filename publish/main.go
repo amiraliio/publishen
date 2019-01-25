@@ -18,7 +18,7 @@ func main() {
 
 	if err := pb.RegisterPublishServiceHandler(srv.Server(), new(handler.Service)); err != nil {
 		log.Fatal(err)
-	}
+	} 
 
 	if err := srv.Run(); err != nil {
 		log.Fatal(err)

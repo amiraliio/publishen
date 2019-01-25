@@ -1,30 +1,24 @@
 package repository
 
 import (
-	"github.com/vmware/vic/lib/apiservers/engine/errors"
 	"github.com/amiraliio/publishen/publish/config"
 	pb "github.com/amiraliio/publishen/publish/model/publish"
+	"github.com/arangodb/go-driver"
 )
 
 //Adapter is publish repository interface
 type Adapter interface {
 	Create(*pb.Publish) (string, error)
 	Get(*pb.Publish) (*pb.Publish, error)
-	List(*pb.Request) ([]*pb.Publishes, error)
+	List(*pb.Request) ([]*pb.Publish, error)
 }
 
 //Repository publish
 type Repository struct{}
 
-const collection string = "publishes"
-
 //Create a publish into database
 func (r *Repository) Create(p *pb.Publish) (string, error) {
-	db, err := config.DB()
-	if err != nil {
-		return "", err
-	}
-	c, err := db.Collection(nil, collection)
+	c, err := config.Collection()
 	if err != nil {
 		return "", err
 	}
@@ -37,16 +31,12 @@ func (r *Repository) Create(p *pb.Publish) (string, error) {
 
 //Get a publish
 func (r *Repository) Get(p *pb.Publish) (*pb.Publish, error) {
+	c, err := config.Collection()
+	if err != nil {
+		return nil, err
+	}
 	var pub *pb.Publish
-	db, err := config.DB()
-	if err != nil {
-		return nil, err
-	}
-	collection, err := db.Collection(nil, collection)
-	if err != nil {
-		return nil, err
-	}
-	publish, err := collection.ReadDocument(nil, p.Key, &pub)
+	publish, err := c.ReadDocument(nil, p.Key, &pub)
 	if err != nil {
 		return nil, err
 	}
@@ -55,6 +45,30 @@ func (r *Repository) Get(p *pb.Publish) (*pb.Publish, error) {
 	return pub, nil
 }
 
-func (r *Repository) List(req *pb.Request) ([]*pb.Publishes, error){
-	//TODO
+//List of publishes
+func (r *Repository) List(req *pb.Request) ([]*pb.Publish, error) {
+	db, err := config.DB()
+	if err != nil {
+		return nil, err
+	}
+	query := "FOR p IN publishes RETURN p"
+	cursor, err := db.Query(nil, query, nil)
+	if err != nil {
+		return nil, err
+	}
+	defer cursor.Close()
+	var publishes []*pb.Publish
+	for {
+		var pub *pb.Publish
+		meta, err := cursor.ReadDocument(nil, &pub)
+		if driver.IsNoMoreDocuments(err) {
+			break
+		} else if err != nil {
+			return nil, err
+		}
+		pub.ID = meta.ID.String()
+		pub.Key = meta.Key
+		publishes = append(publishes, pub)
+	}
+	return publishes, nil
 }
