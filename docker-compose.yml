@@ -3,11 +3,11 @@ version: '3.7'
 services:
 
       publishen-product:
-        build: ./product
+        build: ./publish
         ports:
           - 8383:50050
         volumes:
-          - .:/var/www/publishen/product
+          - .:/var/www/publishen/publish
           - .:/publishen
           - $GOPATH/pkg/mod:/go/pkg/mod
         environment:
