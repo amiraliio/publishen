@@ -6,21 +6,20 @@ import "google/protobuf/timestamp.proto";
 
 service publishService {
   rpc CreatePublish(Publish) returns (Response) {}
-  rpc ListOfPublishes(Request) returns (Response) {}
+  rpc ListOfUserPublishes(Request) returns (Response) {}
   rpc GetPublish(Publish) returns (Response) {}
   rpc UpdatePublish(Publish) returns (Response) {}
   rpc DeletePublish(Publish) returns (Response) {}
 }
 
 message Request {
-  string userID = 1;
-  int32 page = 2;
-  int32 size = 3;
-  enum class { // User must add class of publish kike I_WANT or I_HAVE
+  int32 page = 1;
+  int32 size = 2;
+  enum class {  // User must add class of publish kike I_WANT or I_HAVE
     I_WANT = 0;
     I_HAVE = 1;
   };
-  enum group { // The user must specify what is it the publish
+  enum group {  // The user must specify what is it the publish
     ARTICLE = 0;
     PRODUCT = 1;
     GALLERY = 2;
@@ -31,33 +30,32 @@ message Request {
 }
 
 message Publish {
-  string ID = 1;                     // Document ID from database
-  string title = 2;                  // Publish title
-  string description = 3;            // Publish description
-  string banner = 4;                 // Publish banner picture
-  repeated string images = 5;        // Publish gallery picture
-  Location location = 6;             // Publish location
-  repeated Attribute attributes = 7; // Publish attribute
-  string shareGroupID = 9;   // Publish ShareGroupID, for add id to publish
-  string userID = 10;        // userID for publish
-  repeated string tags = 11; // Users can add some tags on their publishing
-  string Key = 12;           // Document Key from database
-  google.protobuf.Timestamp created_at = 13; // created_at time
-  google.protobuf.Timestamp updated_at = 14; // updated_at time
-  enum publishStatus {                       // publish status
+  string ID = 1;                      // Document ID from database
+  string title = 2;                   // Publish title
+  string description = 3;             // Publish description
+  string banner = 4;                  // Publish banner picture
+  repeated string images = 5;         // Publish gallery picture
+  Location location = 6;              // Publish location
+  repeated Attribute attributes = 7;  // Publish attribute
+  string shareGroupID = 9;    // Publish ShareGroupID, for add id to publish
+  string userID = 10;         // userID for publish
+  repeated string tags = 11;  // Users can add some tags on their publishing
+  string Key = 12;            // Document Key from database
+  google.protobuf.Timestamp created_at = 13;  // created_at time
+  google.protobuf.Timestamp updated_at = 14;  // updated_at time
+  enum publishStatus {                        // publish status
     ACTIVE = 0;
     DEACTIVATE = 1;
   };
-  enum shareState { // User must add share state like private or public on their
-                    // publish
+  enum shareState {  // User must add share state like private or public
     PUBLIC = 0;
     PRIVATE = 1;
   };
-  enum class { // User must add class of publish kike I_WANT or I_HAVE
+  enum class {  // User must add class of publish kike I_WANT or I_HAVE
     I_WANT = 0;
     I_HAVE = 1;
   };
-  enum group { // The user must specify what is it the publish
+  enum group {  // The user must specify what is it the publish
     ARTICLE = 0;
     PRODUCT = 1;
     GALLERY = 2;
@@ -78,9 +76,11 @@ message Attribute {
 }
 
 message Response {
-  string errorMessage = 1;
-  bool success = 2;
-  string documentID = 3;
-  Publish publish = 4;
-  repeated Publish publishes = 5;
+  int32 code = 1;
+  string message = 2;
+  message Data {
+    Publish publish = 2;
+    repeated Publish publishes = 3;
+  }
+  Data data = 3;
 }

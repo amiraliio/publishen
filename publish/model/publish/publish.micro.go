@@ -47,7 +47,7 @@ var _ server.Option
 
 type PublishService interface {
 	CreatePublish(ctx context.Context, in *Publish, opts ...client.CallOption) (*Response, error)
-	ListOfPublishes(ctx context.Context, in *Request, opts ...client.CallOption) (*Response, error)
+	ListOfUserPublishes(ctx context.Context, in *Request, opts ...client.CallOption) (*Response, error)
 	GetPublish(ctx context.Context, in *Publish, opts ...client.CallOption) (*Response, error)
 	UpdatePublish(ctx context.Context, in *Publish, opts ...client.CallOption) (*Response, error)
 	DeletePublish(ctx context.Context, in *Publish, opts ...client.CallOption) (*Response, error)
@@ -81,8 +81,8 @@ func (c *publishService) CreatePublish(ctx context.Context, in *Publish, opts ..
 	return out, nil
 }
 
-func (c *publishService) ListOfPublishes(ctx context.Context, in *Request, opts ...client.CallOption) (*Response, error) {
-	req := c.c.NewRequest(c.name, "PublishService.ListOfPublishes", in)
+func (c *publishService) ListOfUserPublishes(ctx context.Context, in *Request, opts ...client.CallOption) (*Response, error) {
+	req := c.c.NewRequest(c.name, "PublishService.ListOfUserPublishes", in)
 	out := new(Response)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
@@ -125,7 +125,7 @@ func (c *publishService) DeletePublish(ctx context.Context, in *Publish, opts ..
 
 type PublishServiceHandler interface {
 	CreatePublish(context.Context, *Publish, *Response) error
-	ListOfPublishes(context.Context, *Request, *Response) error
+	ListOfUserPublishes(context.Context, *Request, *Response) error
 	GetPublish(context.Context, *Publish, *Response) error
 	UpdatePublish(context.Context, *Publish, *Response) error
 	DeletePublish(context.Context, *Publish, *Response) error
@@ -134,7 +134,7 @@ type PublishServiceHandler interface {
 func RegisterPublishServiceHandler(s server.Server, hdlr PublishServiceHandler, opts ...server.HandlerOption) error {
 	type publishService interface {
 		CreatePublish(ctx context.Context, in *Publish, out *Response) error
-		ListOfPublishes(ctx context.Context, in *Request, out *Response) error
+		ListOfUserPublishes(ctx context.Context, in *Request, out *Response) error
 		GetPublish(ctx context.Context, in *Publish, out *Response) error
 		UpdatePublish(ctx context.Context, in *Publish, out *Response) error
 		DeletePublish(ctx context.Context, in *Publish, out *Response) error
@@ -154,8 +154,8 @@ func (h *publishServiceHandler) CreatePublish(ctx context.Context, in *Publish, 
 	return h.PublishServiceHandler.CreatePublish(ctx, in, out)
 }
 
-func (h *publishServiceHandler) ListOfPublishes(ctx context.Context, in *Request, out *Response) error {
-	return h.PublishServiceHandler.ListOfPublishes(ctx, in, out)
+func (h *publishServiceHandler) ListOfUserPublishes(ctx context.Context, in *Request, out *Response) error {
+	return h.PublishServiceHandler.ListOfUserPublishes(ctx, in, out)
 }
 
 func (h *publishServiceHandler) GetPublish(ctx context.Context, in *Publish, out *Response) error {

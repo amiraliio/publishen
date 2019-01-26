@@ -11,7 +11,7 @@ func main() {
 
 	srv := micro.NewService(
 		micro.Name("publishen_publish_service"),
-		micro.Version("1.0"),
+		micro.Version("1.0"), 
 	)
 
 	srv.Init()
