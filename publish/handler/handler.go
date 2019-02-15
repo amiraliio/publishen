@@ -75,7 +75,7 @@ func (s *Service) UpdatePublish(ctx context.Context, req *pb.Publish, res *pb.Re
 //DeletePublish service
 func (s *Service) DeletePublish(ctx context.Context, req *pb.Publish, res *pb.Response) error {
 	repo := s.getRepository()
-	publish, err := repo.delete(req)
+	publish, err := repo.Delete(req)
 	if err != nil {
 		res.Code = http.StatusInternalServerError
 		res.Message = err.Error()
