@@ -38,6 +38,7 @@ require (
 	github.com/gogo/googleapis v1.1.0 // indirect
 	github.com/gogo/protobuf v1.2.0 // indirect
 	github.com/golang/groupcache v0.0.0-20190129154638-5b532d6fd5ef // indirect
+	github.com/golang/protobuf v1.2.0
 	github.com/googleapis/gax-go v2.0.2+incompatible // indirect
 	github.com/gorhill/cronexpr v0.0.0-20180427100037-88b0669f7d75 // indirect
 	github.com/gorilla/websocket v1.4.0 // indirect
@@ -80,8 +81,6 @@ require (
 	github.com/michaelklishin/rabbit-hole v1.5.0 // indirect
 	github.com/micro/go-log v0.1.0
 	github.com/micro/go-micro v0.26.1
-	github.com/micro/protobuf v0.0.0-20180321161605-ebd3be6d4fdb // indirect
-	github.com/micro/protoc-gen-micro v0.6.0 // indirect
 	github.com/miekg/dns v1.1.4 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/pointerstructure v0.0.0-20170205204203-f2329fcfa9e2 // indirect
@@ -104,6 +103,7 @@ require (
 	golang.org/x/crypto v0.0.0-20190211182817-74369b46fc67 // indirect
 	golang.org/x/sys v0.0.0-20190213121743-983097b1a8a3 // indirect
 	golang.org/x/time v0.0.0-20181108054448-85acf8d2951c // indirect
+	google.golang.org/grpc v1.18.0 // indirect
 	gopkg.in/asn1-ber.v1 v1.0.0-20181015200546-f715ec2f112d // indirect
 	gopkg.in/gorethink/gorethink.v4 v4.1.0 // indirect
 	gopkg.in/ory-am/dockertest.v2 v2.2.3 // indirect
