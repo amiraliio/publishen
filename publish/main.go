@@ -23,6 +23,8 @@ func main() {
 		micro.RegisterInterval(time.Second*10),
 	)
 
+	srv.Init()
+	
 	if err := pb.RegisterPublishServiceHandler(srv.Server(), new(handler.Service)); err != nil {
 		log.Fatal(err)
 	}
