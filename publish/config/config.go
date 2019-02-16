@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/arangodb/go-driver"
+	driver "github.com/arangodb/go-driver"
 	"github.com/arangodb/go-driver/http"
 	"os"
 )
@@ -12,21 +12,22 @@ const collection string = "publishes"
 func DB() (driver.Database, error) {
 	localDBHost := os.Getenv("DB_HOST")
 	if localDBHost == "" {
-		localDBHost = os.Getenv("ARANGODB_HOST")
+		localDBHost = os.Getenv("ARANGO_HOST")
 	}
-	conn, err := http.NewConnection(http.ConnectionConfig{
+	init, err := http.NewConnection(http.ConnectionConfig{
 		Endpoints: []string{localDBHost},
 	})
+	con, err := init.SetAuthentication(driver.BasicAuthentication(os.Getenv("ARANGO_USERNAME"), ""));
 	if err != nil {
 		return nil, err
 	}
 	c, err := driver.NewClient(driver.ClientConfig{
-		Connection: conn,
+		Connection: con,
 	})
 	if err != nil {
 		return nil, err
 	}
-	db, err := c.Database(nil, os.Getenv("DATABASE_NAME"))
+	db, err := c.Database(nil, os.Getenv("ARANGO_DATABASE"))
 	if err != nil {
 		return nil, err
 	}

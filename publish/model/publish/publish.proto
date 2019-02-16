@@ -15,11 +15,13 @@ service publishService {
 message Request {
   int32 page = 1;
   int32 size = 2;
-  enum class {  // User must add class of publish kike I_WANT or I_HAVE
+  Class class = 3;  // User must add class of publish kike I_WANT or I_HAVE
+  Group group = 4;  // The user must specify what is it the publish
+  enum Class {
     I_WANT = 0;
     I_HAVE = 1;
   };
-  enum group {  // The user must specify what is it the publish
+  enum Group {
     ARTICLE = 0;
     PRODUCT = 1;
     GALLERY = 2;
@@ -30,32 +32,36 @@ message Request {
 }
 
 message Publish {
-  string ID = 1;                      // Document ID from database
-  string title = 2;                   // Publish title
-  string description = 3;             // Publish description
-  string banner = 4;                  // Publish banner picture
-  repeated string images = 5;         // Publish gallery picture
-  Location location = 6;              // Publish location
-  repeated Attribute attributes = 7;  // Publish attribute
-  string shareGroupID = 9;    // Publish ShareGroupID, for add id to publish
-  string userID = 10;         // userID for publish
+  string id = 1;                      // Document ID from database
+  string key = 2;                    // Document Key from database
+  string title = 3;                   // Publish title
+  string description = 4;             // Publish description
+  string banner = 5;                  // Publish banner picture
+  repeated string images = 6;         // Publish gallery picture
+  Location location = 7;              // Publish location
+  repeated Attribute attributes = 8;  // Publish attribute
+  string share_group_id = 9;    // Publish ShareGroupID, for add id to publish
+  string user_id = 10;         // userID for publish
   repeated string tags = 11;  // Users can add some tags on their publishing
-  string Key = 12;            // Document Key from database
-  google.protobuf.Timestamp created_at = 13;  // created_at time
-  google.protobuf.Timestamp updated_at = 14;  // updated_at time
-  enum publishStatus {                        // publish status
+  google.protobuf.Timestamp created_at = 12;  // created_at time
+  google.protobuf.Timestamp updated_at = 13;  // updated_at time
+  PublishStatus publish_status = 14;          // publish status
+  ShareState share_state = 15;  // add share state like private or public
+  Class class = 16;  // User must add class of publish kike I_WANT or I_HAVE
+  Group group = 17;  // The user must specify what is it the publish
+  enum PublishStatus {
     ACTIVE = 0;
     DEACTIVATE = 1;
   };
-  enum shareState {  // User must add share state like private or public
+  enum ShareState {
     PUBLIC = 0;
     PRIVATE = 1;
   };
-  enum class {  // User must add class of publish kike I_WANT or I_HAVE
+  enum Class {
     I_WANT = 0;
     I_HAVE = 1;
   };
-  enum group {  // The user must specify what is it the publish
+  enum Group {
     ARTICLE = 0;
     PRODUCT = 1;
     GALLERY = 2;

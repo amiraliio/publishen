@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/amiraliio/publishen/publish/handler"
 	pb "github.com/amiraliio/publishen/publish/model/publish"
+	"github.com/joho/godotenv"
 	"github.com/micro/go-log"
 	"github.com/micro/go-micro"
 	"time"
@@ -10,14 +11,17 @@ import (
 
 func main() {
 
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	srv := micro.NewService(
 		micro.Name("publishen_publish_service"),
 		micro.Version("1.0.0"),
 		micro.RegisterTTL(time.Second*30),
-		micro.RegisterInterval(time.Second*15),
+		micro.RegisterInterval(time.Second*10),
 	)
-
-	srv.Init()
 
 	if err := pb.RegisterPublishServiceHandler(srv.Server(), new(handler.Service)); err != nil {
 		log.Fatal(err)

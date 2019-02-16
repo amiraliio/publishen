@@ -28,10 +28,13 @@ func (r *Repository) Create(p *pb.Publish) (*pb.Publish, error) {
 	if err != nil {
 		return nil, err
 	}
-	var pub *pb.Publish
-	pub.ID = meta.ID.String()
-	pub.Key = meta.Key
-	return pub, nil
+	// var pub = &pb.Publish{
+	// 	Id : meta.ID.String(),
+	// 	Key : meta.Key,
+	// }
+	p.Id = meta.ID.String()
+	p.Key = meta.Key
+	return p, nil
 }
 
 //Get a publish
@@ -46,7 +49,7 @@ func (r *Repository) Get(p *pb.Publish) (*pb.Publish, error) {
 		return nil, err
 	}
 	pub.Key = publish.Key
-	pub.ID = publish.ID.String()
+	pub.Id = publish.ID.String()
 	return pub, nil
 }
 
@@ -71,7 +74,7 @@ func (r *Repository) ListOfUserPublishes(req *pb.Request) ([]*pb.Publish, error)
 		} else if err != nil {
 			return nil, err
 		}
-		pub.ID = meta.ID.String()
+		pub.Id = meta.ID.String()
 		pub.Key = meta.Key
 		publishes = append(publishes, pub)
 	}
@@ -89,7 +92,7 @@ func (r *Repository) Update(p *pb.Publish) (*pb.Publish, error) {
 		return nil, err
 	}
 	var pub *pb.Publish
-	pub.ID = meta.ID.String()
+	pub.Id = meta.ID.String()
 	pub.Key = meta.Key
 	return pub, nil
 }
@@ -105,7 +108,7 @@ func (r *Repository) Delete(p *pb.Publish) (*pb.Publish, error) {
 		return nil, err
 	}
 	var pub *pb.Publish
-	pub.ID = meta.ID.String()
+	pub.Id = meta.ID.String()
 	pub.Key = meta.Key
 	return pub, nil
 }
