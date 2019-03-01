@@ -6,6 +6,8 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/micro/go-log"
 	"github.com/micro/go-micro"
+	server "github.com/micro/go-plugins/server/grpc"
+	transport "github.com/micro/go-plugins/transport/grpc"
 	"time"
 )
 
@@ -19,12 +21,14 @@ func main() {
 	srv := micro.NewService(
 		micro.Name("publishen_publish_service"),
 		micro.Version("1.0.0"),
+		micro.Server(server.NewServer()),
+		micro.Transport(transport.NewTransport()),
 		micro.RegisterTTL(time.Second*30),
 		micro.RegisterInterval(time.Second*10),
 	)
 
 	srv.Init()
-	
+
 	if err := pb.RegisterPublishServiceHandler(srv.Server(), new(handler.Service)); err != nil {
 		log.Fatal(err)
 	}
