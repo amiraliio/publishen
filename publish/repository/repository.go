@@ -28,10 +28,6 @@ func (r *Repository) Create(p *pb.Publish) (*pb.Publish, error) {
 	if err != nil {
 		return nil, err
 	}
-	// var pub = &pb.Publish{
-	// 	Id : meta.ID.String(),
-	// 	Key : meta.Key,
-	// }
 	p.Id = meta.ID.String()
 	p.Key = meta.Key
 	return p, nil

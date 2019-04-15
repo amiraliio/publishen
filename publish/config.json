@@ -1,0 +1,13 @@
+{
+  "service": {
+    "name": "publishen_publish_service",
+    "version": "1.0.0"
+  },
+  "database": {
+    "arango": {
+      "host": "http://localhost:8529",
+      "username": "root",
+      "name": "publishen"
+    }
+  }
+}

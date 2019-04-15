@@ -33,15 +33,15 @@ message Request {
 
 message Publish {
   string id = 1;                      // Document ID from database
-  string key = 2;                    // Document Key from database
+  string key = 2;                     // Document Key from database
   string title = 3;                   // Publish title
   string description = 4;             // Publish description
   string banner = 5;                  // Publish banner picture
   repeated string images = 6;         // Publish gallery picture
   Location location = 7;              // Publish location
   repeated Attribute attributes = 8;  // Publish attribute
-  string share_group_id = 9;    // Publish ShareGroupID, for add id to publish
-  string user_id = 10;         // userID for publish
+  string share_group_id = 9;  // Publish ShareGroupID, for add id to publish
+  string user_id = 10;        // userID for publish
   repeated string tags = 11;  // Users can add some tags on their publishing
   google.protobuf.Timestamp created_at = 12;  // created_at time
   google.protobuf.Timestamp updated_at = 13;  // updated_at time

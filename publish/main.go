@@ -1,28 +1,32 @@
 package main
 
 import (
+	"log"
+	"time"
+
 	"github.com/amiraliio/publishen/publish/handler"
 	pb "github.com/amiraliio/publishen/publish/model/publish"
-	"github.com/joho/godotenv"
 	"github.com/micro/go-log"
 	"github.com/micro/go-micro"
+	"github.com/micro/go-config"
+	registry "github.com/micro/go-plugins/registry/kubernetes"
 	server "github.com/micro/go-plugins/server/grpc"
 	transport "github.com/micro/go-plugins/transport/grpc"
-	"time"
 )
 
 func main() {
 
-	err := godotenv.Load()
+	err := config.LoadFile("config.json")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	srv := micro.NewService(
-		micro.Name("publishen_publish_service"),
-		micro.Version("1.0.0"),
+		micro.Name(config.Get("service","name")),
+		micro.Version(config.Get("service","version")),
 		micro.Server(server.NewServer()),
 		micro.Transport(transport.NewTransport()),
+		micro.Registry(registry.NewRegistry()),
 		micro.RegisterTTL(time.Second*30),
 		micro.RegisterInterval(time.Second*10),
 	)
