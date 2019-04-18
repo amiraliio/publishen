@@ -7,7 +7,9 @@
     "arango": {
       "host": "http://localhost:8529",
       "username": "root",
-      "name": "publishen"
+      "password" : "",
+      "dbName": "publishen",
+      "collection" : "publishes"
     }
   }
 }

@@ -1,24 +1,22 @@
 package config
 
 import (
-	driver "github.com/arangodb/go-driver"
+	"github.com/arangodb/go-driver"
 	"github.com/arangodb/go-driver/http"
 	"github.com/micro/go-config"
 	"os"
 )
 
-const collection string = "publishes"
-
 //DB method
 func DB() (driver.Database, error) {
 	localDBHost := os.Getenv("DB_HOST")
 	if localDBHost == "" {
-		localDBHost = config.Get("database","arango","host")
+		localDBHost = config.Get("database", "arango", "host").String("localhost")
 	}
 	init, err := http.NewConnection(http.ConnectionConfig{
 		Endpoints: []string{localDBHost},
 	})
-	con, err := init.SetAuthentication(driver.BasicAuthentication(config.Get("database","arango","username"), ""))
+	con, err := init.SetAuthentication(driver.BasicAuthentication(config.Get("database", "arango", "username").String("root"), config.Get("database", "arango", "password").String("")))
 	if err != nil {
 		return nil, err
 	}
@@ -28,7 +26,7 @@ func DB() (driver.Database, error) {
 	if err != nil {
 		return nil, err
 	}
-	db, err := c.Database(nil, config.Get("database","arango","name"))
+	db, err := c.Database(nil, config.Get("database", "arango", "dbName").String("publishen"))
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +39,7 @@ func Collection() (driver.Collection, error) {
 	if err != nil {
 		return nil, err
 	}
-	c, err := db.Collection(nil, collection)
+	c, err := db.Collection(nil, config.Get("database", "arango", "collection").String("publishes"))
 	if err != nil {
 		return nil, err
 	}
