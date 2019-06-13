@@ -1,14 +1,12 @@
 package main
 
 import (
-	"time"
-
 	"github.com/amiraliio/publishen/publish/handler"
 	pb "github.com/amiraliio/publishen/publish/model/publish"
-	"github.com/micro/go-config"
-	"github.com/micro/go-log"
-	"github.com/micro/go-micro"
-	registry "github.com/micro/go-plugins/registry/kubernetes"
+	micro "github.com/micro/go-micro"
+	"github.com/micro/go-micro/config"
+	"github.com/micro/go-micro/util/log"
+	registry "github.com/micro/go-plugins/registry/nats"
 	server "github.com/micro/go-plugins/server/grpc"
 	transport "github.com/micro/go-plugins/transport/grpc"
 )
@@ -26,8 +24,6 @@ func main() {
 		micro.Server(server.NewServer()),
 		micro.Transport(transport.NewTransport()),
 		micro.Registry(registry.NewRegistry()),
-		micro.RegisterTTL(time.Second*30),
-		micro.RegisterInterval(time.Second*10),
 	)
 
 	srv.Init()
