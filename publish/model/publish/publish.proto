@@ -5,93 +5,88 @@ package publishen.publish.service;
 import "google/protobuf/timestamp.proto";
 
 service publishService {
-    rpc CreatePublish (Publish) returns (Response) {
-    }
-    rpc ListOfUserPublishes (Request) returns (Response) {
-    }
-    rpc GetPublish (Publish) returns (Response) {
-    }
-    rpc UpdatePublish (Publish) returns (Response) {
-    }
-    rpc DeletePublish (Publish) returns (Response) {
-    }
+  rpc CreatePublish(Publish) returns (Response) {}
+  rpc ListOfUserPublishes(Request) returns (Response) {}
+  rpc GetPublish(Publish) returns (Response) {}
+  rpc UpdatePublish(Publish) returns (Response) {}
+  rpc DeletePublish(Publish) returns (Response) {}
 }
 
 message Request {
-    int32 page = 1;
-    int32 size = 2;
-    Class class = 3; // User must add class of publish kike I_WANT or I_HAVE
-    Group group = 4; // The user must specify what is it the publish
-    enum Class {
-        I_WANT = 0;
-        I_HAVE = 1;
-    };
-    enum Group {
-        ARTICLE = 0;
-        PRODUCT = 1;
-        GALLERY = 2;
-        VIDEO = 3;
-        JOB = 4;
-        PROJECT = 5;
-    };
+  int32 page = 1;
+  int32 size = 2;
+  Class class = 3;  // User must add class of publish kike I_WANT or I_HAVE
+  Group group = 4;  // The user must specify what is it the publish
+  enum Class {
+    I_WANT = 0;
+    I_HAVE = 1;
+  };
+  enum Group {
+    ARTICLE = 0;
+    PRODUCT = 1;
+    GALLERY = 2;
+    VIDEO = 3;
+    JOB = 4;
+    PROJECT = 5;
+  };
 }
 
 message Publish {
-    string id = 1; // Document ID from database
-    string key = 2; // Document Key from database
-    string title = 3; // Publish title
-    string description = 4; // Publish description
-    string banner = 5; // Publish banner picture
-    repeated string images = 6; // Publish gallery picture
-    Location location = 7; // Publish location
-    repeated Attribute attributes = 8; // Publish attribute
-    string share_group_id = 9; // Publish ShareGroupID, for add id to publish
-    string user_id = 10; // userID for publish
-    repeated string tags = 11; // Users can add some tags on their publishing
-    google.protobuf.Timestamp created_at = 12; // created_at time
-    google.protobuf.Timestamp updated_at = 13; // updated_at time
-    PublishStatus publish_status = 14; // publish status
-    ShareState share_state = 15; // add share state like private or public
-    Class class = 16; // User must add class of publish kike I_WANT or I_HAVE
-    Group group = 17; // The user must specify what is it the publish
-    enum PublishStatus {
-        ACTIVE = 0;
-        DEACTIVATE = 1;
-    };
-    enum ShareState {
-        PUBLIC = 0;
-        PRIVATE = 1;
-    };
-    enum Class {
-        I_WANT = 0;
-        I_HAVE = 1;
-    };
-    enum Group {
-        ARTICLE = 0;
-        PRODUCT = 1;
-        GALLERY = 2;
-        VIDEO = 3;
-        JOB = 4;
-        PROJECT = 5;
-    };
+  string id = 1;                      // Document ID from database
+  string key = 2;                     // Document Key from database
+  string title = 3;                   // Publish title
+  string description = 4;             // Publish description
+  string banner = 5;                  // Publish banner picture
+  repeated string images = 6;         // Publish gallery picture
+  Location location = 7;              // Publish location
+  repeated Attribute attributes = 8;  // Publish attribute
+  string share_group_id = 9;  // Publish ShareGroupID, for add id to publish
+  string user_id = 10;        // userID for publish
+  repeated string tags = 11;  // Users can add some tags on their publishing
+  google.protobuf.Timestamp created_at = 12;  // created_at time
+  google.protobuf.Timestamp updated_at = 13;  // updated_at time
+  PublishStatus publish_status = 14;          // publish status
+  ShareState share_state = 15;  // add share state like private or public
+  Class class = 16;  // User must add class of publish kike I_WANT or I_HAVE
+  Group group = 17;  // The user must specify what is it the publish
+  enum PublishStatus {
+    ACTIVE = 0;
+    DEACTIVATE = 1;
+  };
+  enum ShareState {
+    PUBLIC = 0;
+    PRIVATE = 1;
+  };
+  enum Class {
+    I_WANT = 0;
+    I_HAVE = 1;
+  };
+  enum Group {
+    ARTICLE = 0;
+    PRODUCT = 1;
+    GALLERY = 2;
+    VIDEO = 3;
+    JOB = 4;
+    PROJECT = 5;
+  };
 }
 
 message Location {
-    float latitude = 1;
-    float longitude = 2;
+  float latitude = 1;
+  float longitude = 2;
 }
 
 message Attribute {
-    string key = 1;
-    string value = 2;
+  string key = 1;
+  string value = 2;
 }
 
 message Response {
-    int32 code = 1;
-    string message = 2;
-    message Data {
-        Publish publish = 2;
-        repeated Publish publishes = 3;
-    }
-    Data data = 3;
+  int32 code = 1;
+  string message = 2;
+  message Data {
+    Publish publish = 2;
+    repeated Publish publishes = 3;
+  }
+  Data data = 3;
 }
